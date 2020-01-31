@@ -5,20 +5,20 @@ A Python package for controlling Mindustry servers and getting their current sta
 ## Documentation:
 
 
-`pydustry.server(host, server_port = 6567, socketinput_port = 6859)`
+`pydustry.Server(host, server_port = 6567, socketinput_port = 6859)`
 
 **Server object.**
  - `host` - **String.** Required. IP address of the server
  - `server_port` - **Int.** Defaults at 6567. Port of the server.
  - `socketinput_port` - **Int**. Defaults at 6859. Socketinput port of the server.
 #
- `pydustry.server.get_status()`
+ `pydustry.Server.get_status()`
 
 Returns the status of the server in the form of a dict.
 
 Example:
 
- `>>> pydustry.server("exampleserver.com").get_status() `
+ `>>> pydustry.Server("exampleserver.com").get_status() `
 	will output
 
     {"name": "Example Mindustry server",
@@ -36,11 +36,11 @@ Example:
  - `"version"` - **Int.** Version that the server is on
  - `"vertype"` - **String.** Version type of the server.
 #
-`pydustry.server.send_command(command)`
+`pydustry.Server.send_command(command)`
 Sends a command through the **socketinput** port of the server.
  - `command` - **String.** Required. Command that gets sent to the server
  #
- `pydustry.server.get_ping()`
+ `pydustry.Server.get_ping()`
  Returns the **delay** it takes packets to come to the server and back in miliseconds **(ping)**.
 - `ping` - **Int.**
 #
@@ -54,7 +54,7 @@ Sends a command through the **socketinput** port of the server.
     host = input("Enter the IP address of the Mindustry server:")
     port = input("Enter the port of the Mindustry server:")
     
-    server = pydustry.server(host, int(port))
+    server = pydustry.Server(host, int(port))
     
     playercount = server.get_status()["players"]
     ping = server.ping()
@@ -66,7 +66,7 @@ Sends a command through the **socketinput** port of the server.
     
     # A program that will autosave the local server every 5 minutes
     
-    server = pydustry.server("localhost")
+    server = pydustry.Server("localhost")
     
     while True:
         server.send_command("save 0")

@@ -1,12 +1,11 @@
 from socket import socket, create_connection, AF_INET, SOCK_DGRAM
 from struct import unpack
 from time import time
-class server():
+class Server():
     def __init__(self, host, server_port = 6567, socketinput_port = 6859):
         self.host = host
         self.server = (host, server_port)
         self.socketinput_port = socketinput_port
-        self.sock = create_connection((host, socketinput_port))
         
     def get_status(self):
         s = socket(AF_INET, SOCK_DGRAM)
@@ -15,7 +14,7 @@ class server():
     
         statusdict = {}
     
-        data = s.recv(256)
+        data = s.recv(1024)
         statusdict["name"] = data[1:data[0]+1].decode("utf-8")
         data = data[data[0]+1:]
         statusdict["map"] = data[1:data[0]+1].decode("utf-8")
@@ -27,18 +26,20 @@ class server():
         statusdict["version"] = unpack(">i", data[:4])[0]
         data = data[4:]
         statusdict["vertype"] = data[1:data[0]+1].decode("utf-8")
-        data = data[data[0]+1:]
+        
         return statusdict
         
     def send_command(self, command):
-        self.sock.sendall(bytes(command.encode()))
+        s = create_connection((self.host, self.socketinput_port))
+        s.sendall(bytes(command.encode()))
+        s.close()
         
     def ping(self):
         s = socket(AF_INET, SOCK_DGRAM)
         s.connect(self.server)
         start_t = time()
         s.sendall(b"\xfe\x01")
-        s.recv(256)
+        s.recv(1024)
         s.close()
         return(round((time()-start_t)*1000))
     
