@@ -12,7 +12,7 @@ A Python package for controlling Mindustry servers and getting their current sta
  - `server_port` - **Int.** Defaults at 6567. Port of the server.
  - `socketinput_port` - **Int**. Defaults at 6859. Socketinput port of the server.
 #
- `pydustry.Server.get_status()`
+ `pydustry.Server.get_status(timeout = 10.0)`
 
 Returns the status of the server in the form of a dict.
 
@@ -35,6 +35,8 @@ Example:
  - `"wave"` - **Int**. Wave that the server is currently on.
  - `"version"` - **Int.** Version that the server is on
  - `"vertype"` - **String.** Version type of the server.
+ 
+ - `timeout` - **Numeric**, optional
 #
 `pydustry.Server.send_command(command)`
 Sends a command through the **socketinput** port of the server.
