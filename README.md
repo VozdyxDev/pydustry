@@ -36,6 +36,7 @@ Example:
  - `"version"` - **Int.** Version that the server is on
  - `"vertype"` - **String.** Version type of the server.
  
+ 
  - `timeout` - **Numeric**, optional
 #
 `pydustry.Server.send_command(command)`
