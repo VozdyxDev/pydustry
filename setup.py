@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pydustry",
-    version="0.0.3",
+    version="0.0.6",
     author="Ado1928",
     author_email="ado.gamer123@gmail.com",
     description="A package for getting Mindustry server status and sending commands.",

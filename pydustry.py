@@ -7,11 +7,12 @@ class Server():
         self.server = (host, server_port)
         self.socketinput_port = socketinput_port
         
-    def get_status(self):
+    def get_status(self, timeout = 10.0):
         s = socket(AF_INET, SOCK_DGRAM)
         s.connect(self.server)
         s.send(b"\xfe\x01")
-    
+        s.settimeout(timeout)
+        
         statusdict = {}
     
         data = s.recv(1024)
@@ -34,8 +35,9 @@ class Server():
         s.sendall(bytes(command.encode()))
         s.close()
         
-    def ping(self):
+    def ping(self, timeout = 10.0):
         s = socket(AF_INET, SOCK_DGRAM)
+        s.settimeout(timeout)
         s.connect(self.server)
         start_t = time()
         s.sendall(b"\xfe\x01")
