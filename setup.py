@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pydustry",
-    version="0.0.4",
-    author="Ado1928",
-    author_email="ado.gamer123@gmail.com",
+    version="0.1.0",
+    author="Vozdyx",
+    author_email="vozdyxdev@gmail.com",
     description="A package for getting Mindustry server status and sending commands.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ado1928/pydustry/",
+    url="https://github.com/VozdyxDev/pydustry/",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
