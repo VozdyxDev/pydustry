@@ -35,6 +35,10 @@ Example:
  - `"wave"` - **Int**. Wave that the server is currently on.
  - `"version"` - **Int.** Version that the server is on
  - `"vertype"` - **String.** Version type of the server.
+ - `"gamemode"` - **String.**
+ - `"limit"` - **Int.**
+ - `"description"` - **String.**
+ - `"modename"` - **String.**
 #
 `pydustry.Server.send_command(command)`
 Sends a command through the **socketinput** port of the server.
@@ -57,11 +61,11 @@ Sends a command through the **socketinput** port of the server.
     
     server = pydustry.Server(host, int(port))
     
-    playercount = server.get_status()["players"]
+    playercount = server.get_status().players
     ping = server.ping()
     
-    print("The number of players is: " + str(playercount))
-    print("And the ping is: " + str(ping))
+    print(f"The number of players is: {playercount}")
+    print(f"And the ping is: {ping}")
 #
     import pydustry, time
     
